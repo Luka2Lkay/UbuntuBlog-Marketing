@@ -1,0 +1,8 @@
+{
+    "technologies": {
+        "react": "React",
+        "typescript": "TypeScript",
+        "vite": "Vite",
+        "tailwindcss": "Tailwind CSS"
+    }
+}
