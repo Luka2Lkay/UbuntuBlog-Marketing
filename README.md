@@ -24,6 +24,57 @@ The website is responsible for:
 
 ---
 
+## Authentication
+
+Authentication is **not implemented in this project**.
+
+When a visitor clicks **Login**, they are redirected to the separate UbuntuBlog platform where authentication and application functionality are handled.
+
+UbuntuBlog Marketing Website
+│
+│ Login
+▼
+UbuntuBlog Platform
+│
+├── Authentication
+├── Dashboard
+├── Sites
+├── Posts
+
+This keeps the marketing website independent from the core UbuntuBlog application.
+
+---
+
+## Architecture
+
+The project uses a **feature-based architecture**.
+
+```text
+├──scripts
+|   ├──data
+|   |   └──technologies.json
+|   └──generate_readme.js
+├──src
+|   ├──App.css
+|   ├──App.tsx
+|   ├──index.css
+|   └──main.tsx
+├──.gitignore
+├──.oxlintrc.json
+├──index.html
+├──package-lock.json
+├──package.json
+├──README.md
+├──README.template.md
+├──tsconfig.app.json
+├──tsconfig.json
+├──tsconfig.node.json
+└──vite.config.ts
+
+```
+
+---
+
 ## Technology
 
 - React

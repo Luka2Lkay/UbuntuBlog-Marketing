@@ -45,13 +45,56 @@ const technologyStack = generateTechnologyList(
   technologies.stack,
 );
 
+const generateTree = (directory, prefix = "") => {
+  const ignored = new Set(["node_modules", "dist", "build", ".git", ".github"]);
+
+  const entries = fs
+    .readdirSync(directory, { withFileTypes: true })
+    .filter((entry) => !ignored.has(entry.name))
+    .sort((a, b) => {
+      if (a.isDirectory() && !b.isDirectory()) {
+        return -1;
+      }
+
+      if (a.isDirectory() && b.isDirectory()) {
+        return 1;
+      }
+
+      return a.name.localeCompare(b.name);
+    });
+
+  return entries
+    .map((entry, index) => {
+      const isLast = index === entries.length - 1;
+      const connector = isLast ? "└──" : "├──";
+      const nextPrefix = prefix + (isLast ? "   " : "|   ");
+
+      if (entry.isDirectory()) {
+        return (
+          `${prefix}${connector}${entry.name}\n` +
+          generateTree(path.join(directory, entry.name), nextPrefix)
+        );
+      }
+
+      return `${prefix}${connector}${entry.name}\n`;
+    })
+    .join("");
+
+  return entries;
+};
+
 const version = packageJson.version || "0.0.0";
+
+const tree = generateTree(ROOT_DIR);
+
+console.log(tree);
 
 let readMe = fs.readFileSync(templatePath, "utf-8");
 
 readMe = readMe
   .replaceAll("{{VERSION}}", version)
-  .replaceAll("{{TECHNOLOGY}}", technologyStack);
+  .replaceAll("{{TECHNOLOGY}}", technologyStack)
+  .replaceAll("{{TREE}}", tree);
 
 fs.writeFileSync(readmePath, readMe);
 
