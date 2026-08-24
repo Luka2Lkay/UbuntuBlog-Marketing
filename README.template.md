@@ -58,3 +58,57 @@ The project uses a **feature-based architecture**.
 ## Technology
 
 {{TECHNOLOGY}}
+
+---
+
+## Design
+
+The website focuses on a modern technical SaaS aesthetic while clearly communicating UbuntuBlog's core architecture.
+
+Framer Motion is used for purposeful animations such as:
+
+- Hero entrance animations
+- Scroll-based section animations
+- Staggered feature cards
+- Animated API/data flows
+- Architecture diagrams
+- Navigation transitions
+- CTA interactions
+
+The goal is to make the architecture of UbuntuBlog visually understandable rather than relying solely on text.
+
+---
+
+## Relationship to UbuntuBlog
+
+UbuntuBlog is a centralized, multi-tenant blogging platform that allows businesses to manage their content through a dedicated platform and expose that content through an API.
+
+The marketing website explains this relationship:
+
+                    UbuntuBlog Platform
+                           │
+                    Manage Content
+                           │
+                           ▼
+                     UbuntuBlog API
+                           │
+             ┌─────────────┼─────────────┐
+             ▼             ▼             ▼
+       Business A    Business B    Business C
+         Website       Website       Website
+
+The marketing website itself does **not** manage this content. Its role is to explain the platform and direct users to the appropriate UbuntuBlog application.
+
+## Development
+
+Install dependencies:
+
+`npm install`
+
+Start the development server:
+
+`npm run dev`
+
+Build for production:
+
+`npm run build`

@@ -87,8 +87,6 @@ const version = packageJson.version || "0.0.0";
 
 const tree = generateTree(ROOT_DIR);
 
-console.log(tree);
-
 let readMe = fs.readFileSync(templatePath, "utf-8");
 
 readMe = readMe
