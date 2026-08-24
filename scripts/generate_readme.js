@@ -49,7 +49,9 @@ const version = packageJson.version || "0.0.0";
 
 let readMe = fs.readFileSync(templatePath, "utf-8");
 
-readMe = readMe.replaceAll("{{VERSION}}", version);
+readMe = readMe
+  .replaceAll("{{VERSION}}", version)
+  .replaceAll("{{TECHNOLOGY}}", technologyStack);
 
 fs.writeFileSync(readmePath, readMe);
 

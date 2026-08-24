@@ -23,3 +23,7 @@ The website is responsible for:
 - Directing users to the UbuntuBlog platform
 
 ---
+
+## Technology
+
+{{TECHNOLOGY}}
