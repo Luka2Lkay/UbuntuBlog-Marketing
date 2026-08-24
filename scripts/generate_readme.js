@@ -13,9 +13,7 @@ const technologiesPath = path.join(
   "data",
   "technologies.json",
 );
-
 const packageJsonPath = path.join(ROOT_DIR, "package.json");
-
 const templatePath = path.join(ROOT_DIR, "README.template.md");
 const readmePath = path.join(ROOT_DIR, "README.md");
 
@@ -30,14 +28,29 @@ const getInstalledPackages = (packageJson) => {
   ]);
 };
 
-const generateTechnologyList = (installPackages, technologyMap) => {
+const generateTechnologyList = (installedPackages, technologyMap) => {
   return Object.entries(technologyMap)
-    .filter(([packageName]) => installPackages.has(packageName))
+    .filter(([packageName]) => installedPackages.has(packageName))
     .map(([, technologyName]) => `- ${technologyName}`)
     .join("\n");
 };
 
 const packageJson = readJson(packageJsonPath);
-const installPackages = getInstalledPackages(packageJson);
+const technologies = readJson(technologiesPath);
 
+const installedPackages = getInstalledPackages(packageJson);
 
+const technologyStack = generateTechnologyList(
+  installedPackages,
+  technologies.stack,
+);
+
+const version = packageJson.version || "0.0.0";
+
+let readMe = fs.readFileSync(templatePath, "utf-8");
+
+readMe = readMe.replaceAll("{{VERSION}}", version);
+
+fs.writeFileSync(readmePath, readMe);
+
+console.log("README.md generated successfully!");

@@ -1,5 +1,5 @@
 {
-    "technologies": {
+    "stack": {
         "react": "React",
         "typescript": "TypeScript",
         "vite": "Vite",

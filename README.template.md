@@ -9,3 +9,17 @@ This project is **marketing-only**. It does not contain the UbuntuBlog CMS, dash
 ## **Version**: `{{VERSION}}`
 
 ---
+
+## Purpose
+
+The website is responsible for:
+
+- Explaining what UbuntuBlog is
+- Demonstrating how UbuntuBlog works
+- Showcasing key features and benefits
+- Explaining the multi-site and API architecture
+- Providing information for businesses and developers
+- Providing links to documentation
+- Directing users to the UbuntuBlog platform
+
+---
