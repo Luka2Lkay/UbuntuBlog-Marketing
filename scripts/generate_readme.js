@@ -1,4 +1,3 @@
-import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -79,8 +78,6 @@ const generateTree = (directory, prefix = "") => {
       return `${prefix}${connector}${entry.name}\n`;
     })
     .join("");
-
-  return entries;
 };
 
 const version = packageJson.version || "0.0.0";
