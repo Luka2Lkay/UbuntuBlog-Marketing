@@ -1,8 +1,6 @@
 import { motion } from "framer-motion"
 import { ArrowRight, Code2, Globe2, Layers3 } from "lucide-react"
-import { Link } from "react-router-dom"
-
-const UBUNTUBLOG_URL = import.meta.env.VITE_UBUNTUBLOG_APP_URL
+import { UBUNTUBLOG_APP_URL } from "@/lib/constants"
 
 function Hero() {
     return (
@@ -49,14 +47,14 @@ function Hero() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
                     >
-                        <a href={UBUNTUBLOG_URL} className="group inline-flex items-center gap-2 rounded-lg bg-black px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">
+                        <a href={UBUNTUBLOG_APP_URL} className="group inline-flex items-center gap-2 rounded-lg bg-black px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.02]">
                             Get Started
                             <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
                         </a>
 
-                        <Link to={"#how-it-works"} className="rounded-lg border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50">
+                        <a href="#how-it-works" className="rounded-lg border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50">
                             See How It Works
-                        </Link>
+                        </a>
                     </motion.div>
                 </div>
 
