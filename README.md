@@ -71,15 +71,18 @@ The project uses a **feature-based architecture**.
 |   |   └──home
 |   |      ├──components
 |   |      |   ├──BuiltFor.tsx
-|   |      |   └──Hero.tsx
+|   |      |   ├──Hero.tsx
+|   |      |   └──HowItWorks.tsx
 |   |      ├──data
-|   |      |   └──business_types.ts
+|   |      |   ├──business_types.ts
+|   |      |   └──steps.ts
 |   |      ├──pages
 |   |      |   └──Home.tsx
 |   |      └──index.tsx
+|   ├──lib
+|   |   └──constants.ts
 |   ├──index.css
 |   └──main.tsx
-├──.env
 ├──.gitignore
 ├──.oxlintrc.json
 ├──index.html
