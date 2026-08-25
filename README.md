@@ -70,6 +70,11 @@ The project uses a **feature-based architecture**.
 |   ├──features
 |   |   └──home
 |   |      ├──components
+|   |      |   ├──architecture
+|   |      |   |   ├──Architecture.tsx
+|   |      |   |   ├──ArchitectureCard.tsx
+|   |      |   |   ├──Connector.tsx
+|   |      |   |   └──Principle.tsx
 |   |      |   ├──BuiltFor.tsx
 |   |      |   ├──Hero.tsx
 |   |      |   └──HowItWorks.tsx
