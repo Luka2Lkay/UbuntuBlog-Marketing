@@ -1,0 +1,1 @@
+export const UBUNTUBLOG_APP_URL = import.meta.env.VITE_UBUNTUBLOG_APP_URL

@@ -1,11 +1,11 @@
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, easeInOut } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-
-const UBUNTUBLOG_APP_URL = import.meta.env.VITE_UBUNTUBLOG_APP_URL
+import { UBUNTUBLOG_APP_URL } from "@/lib/constants"
 
 const navLinks = [
+    { name: "Home", href: "#home" },
     { name: "How It Works", href: "#how-it-works" },
     { name: "Features", href: "#features" },
     { name: "Architecture", href: "#architecture" }
@@ -14,8 +14,8 @@ const navLinks = [
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
-    const [showNavbar, setShowNavbar] = useState(false)
-    const [activeSection, setActiveAction] = useState("how-it-works")
+    const [showNavbar, setShowNavbar] = useState(true)
+    const [activeSection, setActiveSection] = useState("home")
 
     const { scrollY } = useScroll()
 
@@ -24,16 +24,16 @@ function Navbar() {
 
         setScrolled(currentScrollY > 20)
 
-        const prevScollY = scrollY.getPrevious() ?? 0;
+        const prevScrollY = scrollY.getPrevious() ?? 0;
 
         if (currentScrollY < 80) {
             setShowNavbar(true)
             return;
         }
 
-        if (Math.abs(currentScrollY - prevScollY) < 10) return
+        if (Math.abs(currentScrollY - prevScrollY) < 10) return
 
-        setShowNavbar(currentScrollY < prevScollY)
+        setShowNavbar(currentScrollY < prevScrollY)
     })
 
     useEffect(() => {
@@ -58,7 +58,7 @@ function Navbar() {
         const handleIntersection: IntersectionObserverCallback = (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setActiveAction(entry.target.id)
+                    setActiveSection(entry.target.id)
                 }
             })
         }
@@ -78,10 +78,10 @@ function Navbar() {
 
     return (
         <motion.header
-            animate={{ y: showNavbar || isOpen ? 0 : "-10%" }}
-            transition={{ duration: 0.05 }}
+            animate={{ y: showNavbar || isOpen ? 0 : "-100%" }}
+            transition={{ duration: 0.2, ease: easeInOut }}
             className="fixed inset-x-0 top-0 z-50"
-        ><div className={`transition-all duration-300 ${scrolled ? "border-b border-gray-200/80 bg-white/90 shadow-sm backdrop-blur-md" : "bg-transparent"}`}>
+        ><div className={`transition-all duration-300 ${scrolled || isOpen ? "border-b border-gray-200/80 bg-white/90 shadow-sm backdrop-blur-md" : "bg-transparent"}`}>
                 <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 lg:px-8">
                     <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
                         <div className="flex size-9 items-center justify-center rounded-lg bg-black text-white">
@@ -97,7 +97,7 @@ function Navbar() {
 
                             return (
                                 <li key={link.name}>
-                                    <a href={link.href} className="relative text-sm font-medium text-gray-600 transition-colors hover:text-black">{link.name}<span className={`absolute left-0 -bottom-1 h-[2px] bg-black transition-all duration-300 group ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} /></a>
+                                    <a href={link.href} className="relative text-sm font-medium text-gray-600 transition-colors hover:text-black group">{link.name}<span className={`absolute left-0 -bottom-1 h-[2px] bg-black transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} /></a>
                                 </li>
                             )
                         })}
@@ -118,25 +118,22 @@ function Navbar() {
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
+                        animate={{ opacity: 1, height: "calc(100dvh - 4.5rem)" }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
                         className="overflow-hidden border-b border-gray-200 bg-white md:hidden"
                     >
-                        <ul className="flex flex-col items-center justify-center min-h-full py-18 gap-7 text-2xl">
-                            {navLinks.map((link, index) => {
+                        <ul className="flex flex-col items-center gap-7 py-16">
+                            {navLinks.map((link) => {
                                 const isActive = activeSection === link.href.slice(1);
-                                return (<motion.li key={link.name}
-                                    initial={{ x: -20, opacity: 0 }}
-                                    animate={{ opacity: 1, x: 0, transition: { delay: index * 0.05 } }}
-                                ><a href={link.href} onClick={() => setIsOpen(false)} className={`rounded-lg px-3 py-3 text-sm font-medium hover:bg-gray-50 hover:text-black ${isActive ? "text-black" : "text-gray-700"}`}>{link.name}</a></motion.li>)
+                                return (<li key={link.name}><a href={link.href} className={`rounded-lg px-3 py-3 text-sm font-medium hover:bg-gray-50 hover:text-black ${isActive ? "text-black" : "text-gray-700"}`} onClick={() => setIsOpen(false)} >{link.name}</a></li>)
                             })}
                         </ul>
 
                         <div className="flex flex-col gap-2 border-t border-gray-100 pt-4">
 
                             <a href={UBUNTUBLOG_APP_URL} onClick={() => setIsOpen(false)} className="rounded-lg px-4 py-3 text-center text-sm font-medium text-gray-700 hover:bg-gray-50">Login</a>
-                            <a href={`${UBUNTUBLOG_APP_URL}/sign-up`} className="rounded-lg bg-black px-4 py-3 text-center text-sm font-medium text-white hover:bg-gray-800">Get Started</a>
+                            <a href={`${UBUNTUBLOG_APP_URL}/sign-up`} onClick={() => setIsOpen(false)} className="rounded-lg bg-black px-4 py-3 text-center text-sm font-medium text-white hover:bg-gray-800">Get Started</a>
                         </div>
                     </motion.div>
                 )}

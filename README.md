@@ -30,6 +30,7 @@ Authentication is **not implemented in this project**.
 
 When a visitor clicks Login, they are redirected to the separate UbuntuBlog platform where authentication and application functionality are handled.
 
+```text
 UbuntuBlog Marketing Website
            │
            │ Login
@@ -41,6 +42,7 @@ UbuntuBlog Marketing Website
            ├── Sites
            ├── Posts
            └── User Management
+```
 
 This keeps the marketing website independent from the core UbuntuBlog application.
 
@@ -56,10 +58,28 @@ The project uses a **feature-based architecture**.
 |   |   └──technologies.json
 |   └──generate_readme.js
 ├──src
-|   ├──App.css
-|   ├──App.tsx
+|   ├──app
+|   |   ├──App.tsx
+|   |   ├──RootLayout.tsx
+|   |   └──router.tsx
+|   ├──components
+|   |   ├──layout
+|   |   |   └──Navbar.tsx
+|   |   └──ui
+|   |      └──NotFound.tsx
+|   ├──features
+|   |   └──home
+|   |      ├──components
+|   |      |   ├──BuiltFor.tsx
+|   |      |   └──Hero.tsx
+|   |      ├──data
+|   |      |   └──business_types.ts
+|   |      ├──pages
+|   |      |   └──Home.tsx
+|   |      └──index.tsx
 |   ├──index.css
 |   └──main.tsx
+├──.env
 ├──.gitignore
 ├──.oxlintrc.json
 ├──index.html
@@ -82,6 +102,7 @@ The project uses a **feature-based architecture**.
 - TypeScript
 - Vite
 - Tailwind CSS
+- Framer Motion
 
 ---
 
