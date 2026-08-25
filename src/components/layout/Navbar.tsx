@@ -7,8 +7,9 @@ import { UBUNTUBLOG_APP_URL } from "@/lib/constants"
 const navLinks = [
     { name: "Home", href: "#home" },
     { name: "How It Works", href: "#how-it-works" },
+    { name: "Architecture", href: "#architecture" },
     { name: "Features", href: "#features" },
-    { name: "Architecture", href: "#architecture" }
+
 ]
 
 function Navbar() {

@@ -1,6 +1,7 @@
 import Hero from "@/features/home/components/Hero"
 import BuiltFor from "@/features/home/components/BuiltFor"
 import HowItWorks from "@/features/home/components/HowItWorks"
+import Architecture from "@/features/home/components/architecture/Architecture"
 
 function Home() {
     return (
@@ -8,6 +9,7 @@ function Home() {
             <Hero />
             <BuiltFor />
             <HowItWorks />
+            <Architecture/>
         </>
     )
 }
