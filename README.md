@@ -28,18 +28,19 @@ The website is responsible for:
 
 Authentication is **not implemented in this project**.
 
-When a visitor clicks **Login**, they are redirected to the separate UbuntuBlog platform where authentication and application functionality are handled.
+When a visitor clicks Login, they are redirected to the separate UbuntuBlog platform where authentication and application functionality are handled.
 
 UbuntuBlog Marketing Website
-│
-│ Login
-▼
-UbuntuBlog Platform
-│
-├── Authentication
-├── Dashboard
-├── Sites
-├── Posts
+           │
+           │ Login
+           ▼
+   UbuntuBlog Platform
+           │
+           ├── Authentication
+           ├── Dashboard
+           ├── Sites
+           ├── Posts
+           └── User Management
 
 This keeps the marketing website independent from the core UbuntuBlog application.
 
