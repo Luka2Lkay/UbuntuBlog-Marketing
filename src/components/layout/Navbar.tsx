@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 const UBUNTUBLOG_APP_URL = import.meta.env.VITE_UBUNTUBLOG_APP_URL
 
 const navLinks = [
+    { name: "Home", href: "#home" },
     { name: "How It Works", href: "#how-it-works" },
     { name: "Features", href: "#features" },
     { name: "Architecture", href: "#architecture" }
@@ -15,7 +16,7 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const [showNavbar, setShowNavbar] = useState(false)
-    const [activeSection, setActiveAction] = useState("how-it-works")
+    const [activeSection, setActiveAction] = useState("home")
 
     const { scrollY } = useScroll()
 
