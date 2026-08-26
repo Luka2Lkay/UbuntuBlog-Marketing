@@ -1,22 +1,19 @@
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, easeInOut } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { UBUNTUBLOG_APP_URL } from "@/lib/constants"
 
 const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "Architecture", href: "#architecture" },
-    { name: "Features", href: "#features" },
+    { name: "Home", href: "/" },
     { name: "Documentation", href: "/documentation" }
 ]
 
-function Navbar() {
+function DocumentationNavbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const [showNavbar, setShowNavbar] = useState(true)
-    const [activeSection, setActiveSection] = useState("home")
+    // const [active, setActive] = useState("Documentaion")
 
     const { scrollY } = useScroll()
 
@@ -38,6 +35,7 @@ function Navbar() {
     })
 
     useEffect(() => {
+
         if (isOpen) {
             document.body.style.overflow = "hidden"
 
@@ -55,37 +53,13 @@ function Navbar() {
         }
     }, [isOpen])
 
-    useEffect(() => {
-        const handleIntersection: IntersectionObserverCallback = (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id)
-                }
-            })
-        }
-
-        const observer = new IntersectionObserver(handleIntersection, {
-            rootMargin: "-20% 0px -70% 0px",
-            threshold: 0
-        })
-
-        navLinks.forEach((link) => {
-
-            if (link.href.startsWith("/")) return;
-
-            const element = document.querySelector(link.href)
-
-            if (element) observer.observe(element)
-        })
-        return () => observer.disconnect()
-    }, [])
-
     return (
         <motion.header
             animate={{ y: showNavbar || isOpen ? 0 : "-100%" }}
             transition={{ duration: 0.2, ease: easeInOut }}
             className="fixed inset-x-0 top-0 z-50"
-        ><div className={`transition-all duration-300 ${scrolled || isOpen ? "border-b border-gray-200/80 bg-white/90 shadow-sm backdrop-blur-md" : "bg-transparent"}`}>
+        >
+            <div className={`transition-all duration-300 ${scrolled || isOpen ? "border-b border-gray-200/80 bg-white/90 shadow-sm backdrop-blur-md" : "bg-transparent"}`}>
                 <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 lg:px-8">
                     <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
                         <div className="flex size-9 items-center justify-center rounded-lg bg-black text-white">
@@ -97,18 +71,9 @@ function Navbar() {
 
                     <ul className="hidden items-center gap-8 md:flex">
                         {navLinks.map((link) => {
-                            const isActive = activeSection === link.href.slice(1);
-
                             return (
-
-                                link.href.startsWith("/") ? (
-                                    <li key={link.name}>
-                                        {link.href.startsWith("/") ? <Link to={link.href} className="relative text-sm font-medium text-gray-600 transition-colors hover:text-black group">{link.name}</Link> : <a href={link.href} className="relative text-sm font-medium text-gray-600 transition-colors hover:text-black group">{link.name}<span className={`absolute left-0 -bottom-1 h-[2px] bg-black transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} /></a>}
-                                    </li>
-                                ) : (
-
-                                    <li key={link.name}><a href={link.href} className={`rounded-lg px-3 py-3 text-sm font-medium hover:bg-gray-50 hover:text-black ${isActive ? "text-black" : "text-gray-700"}`} onClick={() => setIsOpen(false)} >{link.name}</a></li>
-                                )
+                                <li key={link.name}>
+                                    <NavLink to={link.href} className={({ isActive }) => `relative text-sm font-medium transition-colors group ${isActive ? "text-black" : "text-gray-600 hover:text-black"}`}>{link.name}</NavLink></li>
                             )
                         })}
                     </ul>
@@ -135,26 +100,13 @@ function Navbar() {
                     >
                         <ul className="flex flex-col items-center gap-7 py-16">
                             {navLinks.map((link) => {
-                                const isActive = activeSection === link.href.slice(1);
                                 return (
-
-                                    link.href.startsWith("/") ? (
-                                        <li key={link.name}><Link to={link.href} className={`rounded-lg px-3 py-3 text-sm font-medium hover:bg-gray-50 hover:text-black ${isActive ? "text-black" : "text-gray-700"}`} onClick={() => setIsOpen(false)} >{link.name}</Link></li>
-
-                                    ) : (
-                                        <li key={link.name}><a href={link.href} className={`rounded-lg px-3 py-3 text-sm font-medium hover:bg-gray-50 hover:text-black ${isActive ? "text-black" : "text-gray-700"}`} onClick={() => setIsOpen(false)} >{link.name}</a></li>
-
-                                    )
+                                    <li key={link.name}><NavLink to={link.href} className="rounded-lg px-3 py-3 text-sm font-medium hover:bg-gray-50 hover:text-black">{link.name}</NavLink></li>
                                 )
-                            }
-                            )
-                            }
-
-
+                            })}
                         </ul>
 
                         <div className="flex flex-col gap-2 border-t border-gray-100 pt-4">
-
                             <a href={UBUNTUBLOG_APP_URL} onClick={() => setIsOpen(false)} className="rounded-lg px-4 py-3 text-center text-sm font-medium text-gray-700 hover:bg-gray-50">Login</a>
                             <a href={`${UBUNTUBLOG_APP_URL}/sign-up`} onClick={() => setIsOpen(false)} className="rounded-lg bg-black px-4 py-3 text-center text-sm font-medium text-white hover:bg-gray-800">Get Started</a>
                         </div>
@@ -165,4 +117,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default DocumentationNavbar
