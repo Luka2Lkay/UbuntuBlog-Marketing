@@ -64,6 +64,7 @@ The project uses a **feature-based architecture**.
 |   |   └──router.tsx
 |   ├──components
 |   |   ├──layout
+|   |   |   ├──Footer.tsx
 |   |   |   └──Navbar.tsx
 |   |   └──ui
 |   |      └──NotFound.tsx
