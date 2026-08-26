@@ -75,11 +75,15 @@ The project uses a **feature-based architecture**.
 |   |      |   |   ├──ArchitectureCard.tsx
 |   |      |   |   ├──Connector.tsx
 |   |      |   |   └──Principle.tsx
+|   |      |   ├──platform_features
+|   |      |   |   ├──PlatformFeatures.tsx
+|   |      |   |   └──Technode.tsx
 |   |      |   ├──BuiltFor.tsx
 |   |      |   ├──Hero.tsx
 |   |      |   └──HowItWorks.tsx
 |   |      ├──data
 |   |      |   ├──business_types.ts
+|   |      |   ├──platform_features.ts
 |   |      |   └──steps.ts
 |   |      ├──pages
 |   |      |   └──Home.tsx
@@ -90,6 +94,7 @@ The project uses a **feature-based architecture**.
 |   └──main.tsx
 ├──.gitignore
 ├──.oxlintrc.json
+├──cspell.json
 ├──index.html
 ├──package-lock.json
 ├──package.json
