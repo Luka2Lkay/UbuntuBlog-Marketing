@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { features } from "@/features/home/data/platform_features"
-import Technode from "@/features/home/components/platform_features/Technode";
+import TechNode from "@/features/home/components/platform_features/TechNode";
 
 function PlatformFeatures() {
   return (
@@ -78,13 +78,13 @@ function PlatformFeatures() {
 
             <div className="relative flex min-h-70 items-center justify-center border-t border-white/10 p-8 lg:border-l lg:border-t-0">
               <div className="relative w-full max-w-sm">
-                <Technode label="UbuntuBlog API" />
+                <TechNode label="UbuntuBlog API" />
                 <div className="mx-auto h-8 w-px bg-white/10" />
 
                 <div className="grid grid-cols-3 gap-2">
-                  <Technode label="React" small />
-                  <Technode label="Angular" small />
-                  <Technode label="Vue" small />
+                  <TechNode label="React" small />
+                  <TechNode label="Angular" small />
+                  <TechNode label="Vue" small />
                 </div>
               </div>
             </div>

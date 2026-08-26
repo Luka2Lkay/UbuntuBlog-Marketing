@@ -5,7 +5,7 @@ interface TechNodeProps {
     small?: boolean
 }
 
-function Technode({ label, small = false }: TechNodeProps) {
+function TechNode({ label, small = false }: TechNodeProps) {
     return (
         <motion.div
             whileHover={{ scale: 1.03 }}
@@ -16,4 +16,4 @@ function Technode({ label, small = false }: TechNodeProps) {
     )
 }
 
-export default Technode
+export default TechNode
