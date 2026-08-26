@@ -78,7 +78,7 @@ The project uses a **feature-based architecture**.
 |   |      |   |   └──Principle.tsx
 |   |      |   ├──platform_features
 |   |      |   |   ├──PlatformFeatures.tsx
-|   |      |   |   └──Technode.tsx
+|   |      |   |   └──TechNode.tsx
 |   |      |   ├──BuiltFor.tsx
 |   |      |   ├──Hero.tsx
 |   |      |   └──HowItWorks.tsx
