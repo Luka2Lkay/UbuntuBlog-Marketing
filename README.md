@@ -53,6 +53,8 @@ This keeps the marketing website independent from the core UbuntuBlog applicatio
 The project uses a **feature-based architecture**.
 
 ```text
+├──public
+|   └──UbuntuBlog.png
 ├──scripts
 |   ├──data
 |   |   └──technologies.json
@@ -60,15 +62,23 @@ The project uses a **feature-based architecture**.
 ├──src
 |   ├──app
 |   |   ├──App.tsx
+|   |   ├──DocumentationLayout.tsx
 |   |   ├──RootLayout.tsx
 |   |   └──router.tsx
 |   ├──components
 |   |   ├──layout
+|   |   |   ├──DocumentationNavbar.tsx
 |   |   |   ├──Footer.tsx
 |   |   |   └──Navbar.tsx
 |   |   └──ui
 |   |      └──NotFound.tsx
 |   ├──features
+|   |   ├──documentation
+|   |   |   ├──components
+|   |   |   |   └──DocumentationHero.tsx
+|   |   |   ├──pages
+|   |   |   |   └──Documentation.tsx
+|   |   |   └──index.ts
 |   |   └──home
 |   |      ├──components
 |   |      |   ├──architecture
