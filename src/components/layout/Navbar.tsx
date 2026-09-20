@@ -103,7 +103,7 @@ function Navbar() {
 
                                 link.href.startsWith("/") ? (
                                     <li key={link.name}>
-                                        {link.href.startsWith("/") ? <Link to={link.href} className="relative text-sm font-medium text-gray-600 transition-colors hover:text-black group">{link.name}</Link> : <a href={link.href} className="relative text-sm font-medium text-gray-600 transition-colors hover:text-black group">{link.name}<span className={`absolute left-0 -bottom-1 h-[2px] bg-black transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} /></a>}
+                                        <Link to={link.href} className="relative text-sm font-medium text-gray-600 transition-colors hover:text-black group">{link.name}</Link>
                                     </li>
                                 ) : (
 
