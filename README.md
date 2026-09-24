@@ -75,7 +75,11 @@ The project uses a **feature-based architecture**.
 |   ├──features
 |   |   ├──documentation
 |   |   |   ├──components
-|   |   |   |   └──DocumentationHero.tsx
+|   |   |   |   ├──DocumentationCTA.tsx
+|   |   |   |   ├──DocumentationHero.tsx
+|   |   |   |   └──IntegrationSteps.tsx
+|   |   |   ├──data
+|   |   |   |   └──steps.ts
 |   |   |   ├──pages
 |   |   |   |   └──Documentation.tsx
 |   |   |   └──index.ts
